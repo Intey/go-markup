@@ -1,0 +1,47 @@
+swagger: '2.0'
+info:
+  title: Markup API
+  version: '1.0'
+basePath: /api
+paths:
+  /health:
+    get:
+      responses:
+        '200':
+          description: OK
+  /marks:
+    post:
+      responses:
+          '201':
+            description: Create mark
+            schema:
+              $ref: "#/definitions/mark_out"
+      parameters:
+        - name: mark
+          in: body
+          description: mark
+          schema:
+            $ref: "#/definitions/mark_in"
+    get:
+      responses:
+          '200':
+            description: list marks
+            schema:
+              type: array
+              items:
+                $ref: "#/definitions/mark_out"
+    
+definitions:
+  mark_out:
+    type: object
+    properties:
+      id:
+        type: integer
+  mark_in:
+    type: object
+    properties:
+      position:
+        type: object
+      entity:
+        type: string
+

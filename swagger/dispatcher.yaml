@@ -1,0 +1,37 @@
+swagger: '2.0'
+info:
+  title: Markup Request Dispatcher API
+  version: '1.0'
+basePath: /api
+paths:
+  /health:
+    get:
+      responses:
+        '200':
+          description: OK
+  /requests:
+    post:
+      responses:
+          '201':
+            description: markup request created
+      parameters:
+        - name: request
+          in: body
+          description: markup request
+          schema:
+            type: object
+            properties:
+              uid:
+                type: string
+              process_id:
+                type: string
+              markup_object_urls:
+                type: array
+                items:
+                  type: string
+              mark_specs:
+                type: array
+                items:
+                  type: object
+              extra_params:
+                type: object
